@@ -40,3 +40,7 @@ class Categoria:
             "nome": self.nome,
             "descricao": self.descricao
         }
+
+    def delete(self):
+        result = mongo.db.categoria.delete_one({'_id': self._id})
+        return result

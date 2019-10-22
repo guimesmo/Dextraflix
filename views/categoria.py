@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask import abort
 
 categorias_bp = Blueprint('categorias', __name__)
 
@@ -26,11 +27,14 @@ def lista_categorias():
     return jsonify(output)
 
 
-@categorias_bp.route('/categorias/<nome>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@categorias_bp.route('/categorias/<nome>', methods=['GET', 'POST', 'DELETE'])
 def categoria(nome):
     from main import mongo
     from models.categoria import Categoria
     categoria = mongo.db.categoria.find_one({'nome': nome})
+    if not categoria:
+        abort(404)
+
     categoria = Categoria.from_dict(categoria)
 
     if request.method == 'POST':
@@ -38,6 +42,11 @@ def categoria(nome):
         categoria.nome = data.get('nome')
         categoria.descricao = data.get('descricao')
         categoria.save()
+
+    if request.method == 'DELETE':
+        categoria.delete()
+        return jsonify({'message': 'ok'})
+
     return jsonify(categoria.as_dict())
 
 
