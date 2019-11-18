@@ -21,6 +21,9 @@ class UserSchema(Schema):
     def make_user(self, data, **kwargs):
         return User(**data)
 
+# "Global" instances for schemas
+# These objects don't have any states. It is save to declare them here and use
+# elsewhere.
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
 
