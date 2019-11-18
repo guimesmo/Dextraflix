@@ -8,7 +8,7 @@ def post_user():
     db = current_app.config["PERSISTENCY"]
     results = user_schema.validate(request.json)
     if results.keys():
-        make_response(f'{results}', 400)
+        return make_response(f'{results}', 400)
     else:
         print("Adding to mongo")
         db.save_user(request.json)
