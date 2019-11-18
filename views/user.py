@@ -1,5 +1,4 @@
 from flask import Blueprint, request, make_response, current_app
-from flask import g
 user_bp = Blueprint(name="user", import_name="user")
 
 @user_bp.route('/user', methods=['POST'])
