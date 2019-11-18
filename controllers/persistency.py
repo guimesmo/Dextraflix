@@ -13,5 +13,5 @@ def get_user(user_id):
     db_index = {
         "_id": user_id
     }
-    result = db.users.get_one(db_index)
+    result = db.users.find_one(db_index)
     return result
