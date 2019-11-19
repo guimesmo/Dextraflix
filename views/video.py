@@ -5,8 +5,8 @@ videos_bp = Blueprint('videos', __name__)
 
 @videos_bp.route('/videos/', methods=['GET', 'PUT'])
 def lista_videos():
-    from main import mongo
-    from models.video import Video 
+    from Dextraflix.main import mongo
+    from Dextraflix.models.video import Video 
 
     if request.method == 'PUT':
         data = request.get_json()
@@ -36,8 +36,8 @@ def lista_videos():
 
 @videos_bp.route('/videos/<slug>', methods=['GET', 'POST', 'DELETE'])
 def video(slug):
-    from main import mongo
-    from models.video import Video
+    from Dextraflix.main import mongo
+    from Dextraflix.models.video import Video
     video = mongo.db.videos.findOne({'slug': slug})
     if not Video:
         abort(404)
@@ -66,8 +66,8 @@ def video(slug):
 # CREATE
 @videos_bp.route('/videos', methods=['POST'])
 def create():
-    from main import mongo
-    from models.video import Video
+    from Dextraflix.main import mongo
+    from Dextraflix.models.video import Video
 
     if request.method == 'POST':
         data = request.get_json()
