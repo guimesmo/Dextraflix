@@ -6,8 +6,8 @@ categorias_bp = Blueprint('categorias', __name__)
 
 @categorias_bp.route('/categorias/', methods=['GET', 'PUT'])
 def lista_categorias():
-    from main import mongo
-    from models.categoria import Categoria
+    from Dextraflix.main import mongo
+    from Dextraflix.models.categoria import Categoria
 
     if request.method == 'PUT':
         data = request.get_json()
@@ -29,8 +29,8 @@ def lista_categorias():
 
 @categorias_bp.route('/categorias/<nome>', methods=['GET', 'POST', 'DELETE'])
 def categoria(nome):
-    from main import mongo
-    from models.categoria import Categoria
+    from Dextraflix.main import mongo
+    from Dextraflix.models.categoria import Categoria
     categoria = mongo.db.categoria.find_one({'nome': nome})
     if not categoria:
         abort(404)

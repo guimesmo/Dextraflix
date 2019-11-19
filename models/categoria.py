@@ -1,4 +1,4 @@
-from main import mongo
+from Dextraflix.main import mongo
 
 
 class Categoria:
