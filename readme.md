@@ -6,6 +6,7 @@ On root folder, create a `.env` file like bellow:
 
 ```bash
 FLASK_APP=main.py
+FLASK_ENV=development
 PYTHONPATH=$(pwd)
 ```
 
