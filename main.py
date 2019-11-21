@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_pymongo import PyMongo
-from Dextraflix.views.categoria import categorias_bp
-from Dextraflix.views.video import videos_bp
+from views.categoria import categorias_bp
+from views.video import videos_bp
 
 app = Flask(__name__)
 

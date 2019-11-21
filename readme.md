@@ -2,11 +2,17 @@
 
 ## To run application
 
-On root folder
+On root folder, create a `.env` file like bellow:
+
+```bash
+FLASK_APP=main.py
+PYTHONPATH=$(pwd)
+```
+
+after that, execute the following:
 
 ```bash
 docker-compose up -d
-export FLASK_APP=main.py
 flask run
 ```
 

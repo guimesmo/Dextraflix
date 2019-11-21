@@ -4,7 +4,7 @@ import tempfile
 import pytest
 import json
 
-from Dextraflix.views.categoria import categorias_bp
+from views.categoria import categorias_bp
 
 def test_category_list():
     app = Flask(__name__)

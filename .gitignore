@@ -7,4 +7,4 @@ venv/
 .idea/
 htmlcov
 .coverage
-
+.vscode

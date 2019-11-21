@@ -1,4 +1,4 @@
-from Dextraflix.main import mongo
+from main import mongo
 
 class Video:
     _id = None
