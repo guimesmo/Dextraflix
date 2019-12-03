@@ -6,10 +6,13 @@ from views.user import user_bp
 from models import UserSchema
 from controllers import persistency
 
+# Logging stuff
+import logging
+logging.basicConfig()
+
 app = Flask(__name__)
 with app.app_context():
     app.register_blueprint(videos_bp)
-    app.register_blueprint(categorias_bp)
     app.register_blueprint(categorias_bp)
     app.register_blueprint(user_bp)
     app.config["MONGO_URI"] = "mongodb://localhost:27017/dextraflix"
@@ -17,6 +20,9 @@ with app.app_context():
     app.config["DB_CONNECTION"] = db
     app.config["USER_SCHEMA"] = UserSchema()
     app.config["PERSISTENCY"] = persistency
+    log = logging.getLogger("dextraflix")
+    log.setLevel(logging.DEBUG)
+    app.config["LOGGER"] = log
 
 
 if __name__ == '__main__':    

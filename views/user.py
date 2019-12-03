@@ -1,12 +1,14 @@
+from logging import log
 from flask import Blueprint, request, make_response, current_app
 import uuid
 user_bp = Blueprint(name="user", import_name="user")
 
 @user_bp.route('/user', methods=['POST'])
 def add_user():
-    print("Creating new user")
+    log = current_app.config["LOGGER"]
     user_schema = current_app.config["USER_SCHEMA"]
     db = current_app.config["PERSISTENCY"]
+    log.debug("Creating new user")
     results = user_schema.validate(request.json)
     if results.keys():
         return make_response(results, 400)
@@ -22,7 +24,8 @@ def add_user():
 
 @user_bp.route('/user/<userid>', methods=['GET'])
 def get_user(userid):
-    print(f"Retrieving user {userid}")
+    log = current_app.config["LOGGER"]
+    log.debug(f"Retrieving user {userid}")
     db = current_app.config["PERSISTENCY"]
 
     user = db.get_user(userid)
@@ -33,7 +36,8 @@ def get_user(userid):
 
 @user_bp.route('/user/<userid>', methods=['PUT'])
 def update_user(userid):
-    print("Updating user")
+    log = current_app.config["LOGGER"]
+    log.debug("Updating user")
     user_schema = current_app.config["USER_SCHEMA"]
     db = current_app.config["PERSISTENCY"]
     results = user_schema.validate(request.json)
@@ -52,7 +56,8 @@ def update_user(userid):
 
 @user_bp.route('/user/<userid>', methods=['DELETE'])
 def delete_user(userid):
-    print(f"Removing user {userid}")
+    log = current_app.config["LOGGER"]
+    log.debug(f"Removing user {userid}")
     db = current_app.config["PERSISTENCY"]
 
     delete_result = db.delete_user(userid)
