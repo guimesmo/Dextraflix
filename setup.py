@@ -11,20 +11,19 @@ with io.open('README.md', 'rt', encoding='utf8') as f:
     README = f.read()
 
 setup(
-    name='SampleModule',
+    name='dextraflix',
     version='1.0.0',
-    url='http://github.com/giovannicuriel/python-project',
+    url='http://github.com/guimesmo/dextraflix',
     project_urls=OrderedDict((
-        ('Code', 'https://github.com/giovannicuriel/python-project.git'),
-        ('Issue tracker', 'https://github.com/giovannicuriel/python-project/issues'),
+        ('Code', 'https://github.com/guimesmo/dextraflix.git'),
+        ('Issue tracker', 'https://github.com/guimesmo/dextraflix/issues'),
     )),
     license='BSD-3-Clause',
-    author='Giovanni Curiel dos Santos',
-    author_email='giovannicuriel@gmail.com',
-    maintainer='dojot team',
-    description='Sample project structure for Python modules',
+    author='Dextra Python Guild',
+    maintainer='Dextra Python Guild team',
+    description='Video sharing service',
     long_description=README,
-    packages=["sample_package"],
+    packages=["dextraflix", "dextraflix.controllers", "dextraflix.models", "dextraflix.views"],
     include_package_data=True,
     zip_safe=False,
     platforms=[any],
@@ -34,7 +33,11 @@ setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        'super_package==1.0.0'
+        'Flask==1.1.1',
+        'Flask-PyMongo==2.3.0',
+        'python-dotenv==0.10.3',
+        'marshmallow==3.2.2',
+        'Flask-RESTful==0.3.7'
     ],
     extras_require={
         "dev": [
