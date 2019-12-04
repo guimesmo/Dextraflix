@@ -1,7 +1,7 @@
 from main import mongo
 
 
-class Categoria:
+class Category:
     _id = None
 
     def __init__(self, nome, descricao):
@@ -10,7 +10,7 @@ class Categoria:
 
     @staticmethod
     def from_dict(instance_dict):
-        categoria = Categoria(nome=instance_dict['nome'],
+        categoria = Category(nome=instance_dict['nome'],
                               descricao=instance_dict['descricao'])
         categoria._id = instance_dict['_id']
         return categoria
