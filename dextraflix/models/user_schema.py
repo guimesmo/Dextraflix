@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields, pprint, post_load
-from . import MetadataSchema
+from dextraflix.models.metadata import MetadataSchema
 
 class UserSchema(Schema):
     """

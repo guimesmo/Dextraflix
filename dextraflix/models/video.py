@@ -1,9 +1,12 @@
-from main import mongo
+from flask import current_app
+
+mongo = current_app.config["PERSISTENCY"]
 
 class Video:
     _id = None
 
     def __init__(self, nome, slug, data, url, categoria_id, descricao, hashtags, metadados, autores):
+        
         self.nome = nome
         self.slug = slug
         self.data = data
