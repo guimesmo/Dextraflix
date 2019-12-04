@@ -1,0 +1,1 @@
+from dextraflix.controllers.persistency import get_persistency
